@@ -1,4 +1,5 @@
 package Entities;
+import Geometry.Coordinate;
 
 public class Entity {
 

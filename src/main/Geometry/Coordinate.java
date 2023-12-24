@@ -1,4 +1,5 @@
-package Entities;
+package Geometry;
+
 
 public class Coordinate {
     private double x;
