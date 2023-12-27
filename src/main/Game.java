@@ -22,7 +22,7 @@ public class Game {
     public boolean gameLost() { // On verifie si des monstres ce trouvent sur la première colonne
         for (ArrayList<Monster> monstersLane : map.getMonstersLanes()) {
             for (Monster monster : monstersLane) {
-                return monster.getX() == 0;
+                return monster.getX() <= 0;
             }
         }
         return false;
@@ -111,7 +111,7 @@ public class Game {
     public void genrerateMonster(Monster monster){
             Random rd = new Random();
             int y = rd.nextInt(map.getMap().length);
-            map.addMonster(map.getMap()[0].length,y,monster);
+            map.addMonster(map.getMap()[0].length-1,y,monster);
         }
 
 
