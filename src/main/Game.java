@@ -22,7 +22,8 @@ public class Game {
     public boolean gameLost() { // On verifie si des monstres ce trouvent sur la première colonne
         for (ArrayList<Monster> monstersLane : map.getMonstersLanes()) {
             for (Monster monster : monstersLane) {
-                return monster.getX() <= 0;
+                if(monster.getX() <= 0) 
+                    return true;
             }
         }
         return false;
@@ -54,23 +55,12 @@ public class Game {
     //MODIFIER POUR QUE PLUSIEUR ATTAQUE EN MEME TEMPS
     public void consoleAttack(int y){
         ArrayList<Monster> monsterLane = map.getMonstersLanes().get(y);
-        if (!monsterLane.isEmpty()) {
-            ArrayList<Monster> attackingMonsters = new ArrayList<Monster>();//on cherche tous les monstre en premiere position
-            Monster min = map.firstInLane(monsterLane);
-            attackingMonsters.add(min);
-            for(Monster monster : monsterLane){
-                if(monster!=min&&monster.getX()==min.getX())
-                    attackingMonsters.add(monster);
-            }
-
-            for(Monster m : attackingMonsters){
-                if(m.getX()!=0&&map.getMap()[y][(int)m.getX()-1]!=null){
-                    double nLife = map.getMap()[y][(int)m.getX()-1].getLife() - m.getPower();
-                    if(nLife<=0){
-                        map.destroyTower((int)m.getX()-1,y);
-                        // DANS DEFENSE PAS ATTACK
-                    }else map.getMap()[y][(int)m.getX()-1].setLife(nLife);
-                }
+        for(Monster monster : monsterLane){
+            if(map.getMap()[y][(int)monster.getX()-1]!=null){
+                double nLife = map.getMap()[y][(int)monster.getX()-1].getLife() - monster.getPower();
+                if(nLife<=0){
+                    map.destroyTower((int)monster.getX()-1, y);
+                }else map.getMap()[y][(int)monster.getX()-1].setLife(nLife);
             }
         }
 
