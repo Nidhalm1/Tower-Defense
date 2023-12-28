@@ -34,20 +34,17 @@ public class Game {
         ArrayList<Monster> monsterLane = map.getMonstersLanes().get(y);
 
         if (!monsterLane.isEmpty()) {
-            Monster monsterToshoot = map.firstInLane(monsterLane);
-
             for (int i = towerLane.length - 1; i >= 0; i--) {
                 if (towerLane[i] != null) {
-                    double nLife = monsterToshoot.getLife() - towerLane[i].getPower();
-                    if (nLife <= 0) {
-                        monsterLane.remove(monsterToshoot);// LE MONSTRE EST MORT
-                        player.setMoney(player.getMoney()+20);
-
-                        if (!monsterLane.isEmpty()) { // SI IL RESTE DES MONSTRE ON CONTINUE SUR LE SUIVANT
-                            monsterToshoot = map.firstInLane(monsterLane);
-                        } else break;
-                    } else monsterToshoot.setLife(nLife);
-
+                    ArrayList<Monster> monsterRangeLane = map.inRangeLane(y, towerLane[i]);//liste des monstres pouvant etre attaqué par la toure
+                    if(!monsterRangeLane.isEmpty()){
+                        Monster monsterToShoot = map.firstInLane(monsterRangeLane);// Le monstre a attaquer 
+                        double nLife = monsterToShoot.getLife() - towerLane[i].getPower();
+                        if (nLife <= 0) {
+                            map.getMonstersLanes().get(y).remove(monsterToShoot);// LE MONSTRE EST MORT on (remove depuis map)
+                            player.setMoney(player.getMoney()+20);// ajout d'argent au joueur quand monstre tué
+                        } else monsterToShoot.setLife(nLife);
+                    }
                 }
             }
         }
@@ -67,7 +64,7 @@ public class Game {
             }
 
             for(Monster m : attackingMonsters){
-                if(map.getMap()[y][(int)m.getX()-1]!=null){
+                if(m.getX()!=0&&map.getMap()[y][(int)m.getX()-1]!=null){
                     double nLife = map.getMap()[y][(int)m.getX()-1].getLife() - m.getPower();
                     if(nLife<=0){
                         map.destroyTower((int)m.getX()-1,y);
@@ -114,6 +111,18 @@ public class Game {
             map.addMonster(map.getMap()[0].length-1,y,monster);
         }
 
+
+
+    //Fonction de test pour verification
+    public void verif(){
+        System.out.println();
+        for(ArrayList<Monster> lane  : map.getMonstersLanes()){
+            for(Monster m : lane){
+                System.out.print(" X: "+m.getX()+" ");
+            }
+        }
+        System.out.println();
+    }
 
 
 

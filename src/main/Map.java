@@ -108,6 +108,20 @@ public class Map {
     }
 
 
+    // PERMET D'AVOIR LA LISTE DE TOUS LES MONSTRES SUR LESQUEL LA TOURE PEUT DEFENDRE
+    //IN: un entier y donnant la lane, et une toure tower
+    //OUT: Une liste de monstre etant dans la range de la  toure
+    public ArrayList<Monster> inRangeLane(int y,Tower tower){
+        ArrayList<Monster> inRange = new ArrayList<Monster>();// On creer une nouvelle liste de monstre vide
+        for(Monster monster : monstersLanes.get(y)){// on Parcour les monstre de la lane y
+            if(tower.inRange(monster)){// si le monstre est dans la range de la toure on l'ajoute
+                inRange.add(monster);
+            }
+        }
+        return inRange;
+    }
+
+
 
 
 

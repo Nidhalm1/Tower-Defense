@@ -23,4 +23,6 @@ public class Tower extends Entity{
         // regarde si la distance entre le monstre et la tour est bien compris dans la distance d'attaque
         // si la distance est négative cela veut dire que le monstre est derrière la toure elle ne peut donc pas defendre dessus
     }
+
+    
 }

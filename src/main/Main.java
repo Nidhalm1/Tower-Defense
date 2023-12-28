@@ -19,6 +19,7 @@ public class Main {
             for(int i=0;i<(String.valueOf(game.getPlayer().getMoney())).length();i++){
                 spaceMoney = spaceMoney.substring(0, spaceMoney.length() - 1);
             }
+            game.verif();
 
             game.fight();
             game.getMap().move();
