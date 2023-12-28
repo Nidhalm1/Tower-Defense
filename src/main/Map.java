@@ -46,26 +46,27 @@ public class Map {
     public void afficherMap() {
         System.out.println("       1  2  3  4  5  6  7  8  9 10");
         System.out.print("-----------------------------------");
-
+        
         for (int i = 0; i < map.length; i++) {
             System.out.println();
             System.out.print(" " + Character.toString((char) (i + 65)) + "  |  ");
 
             for (int j = 0; j < map[i].length; j++) {
                 boolean towerPresent = !(map[i][j] ==null);
-                boolean monsterPresent = false;
+                int compteurM = 0 ;
                 if(!monstersLanes.get(i).isEmpty()) {
+                    compteurM = 0 ;
                     for (int x = 0;x<monstersLanes.get(i).size();x++){
                         if(monstersLanes.get(i).get(x).getX()==j){
-                            monsterPresent = true;
-                            break;
+                            compteurM ++ ;
+            
                         }
-                    }
+                    } 
                 }
                 if (towerPresent) {
                     System.out.print("T  ");
-                } else if (monsterPresent) {
-                    System.out.print("M  ");
+                } else if (compteurM>0 ) {
+                    System.out.print(compteurM+"M  ");
                 } else {
                     System.out.print(".  ");
                 }
@@ -73,6 +74,7 @@ public class Map {
         }
         System.out.println();
     }
+
 
     public boolean canMove(Monster monster){//VARIABLE A CHANGER POUR MODE CONSOLE OU NON NORMALEMENT C'EST 0
         return ((map[(int)(monster.getY())][(int)(monster.getX() -1 )]) == null); //verifie si le monstre peux avancer
