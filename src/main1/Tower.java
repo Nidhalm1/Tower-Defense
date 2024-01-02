@@ -1,3 +1,5 @@
+package main1;
+
 public class Tower extends Entity{
 
     private int cost; //PRIX DE LA TOURE

@@ -1,3 +1,5 @@
+package main1;
+
 public class Monster extends Entity{
 
     double speed;

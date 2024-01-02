@@ -1,9 +1,40 @@
+
+package main1;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game {
+import javax.swing.JFrame;
 
-    private Player player;
+import control.KeyboardListener;
+import control.MyMouseListener;
+
+import view.Menu; // Remove this line to resolve the import statement collision
+import view.Playing;
+import view.Settings;
+
+
+
+
+public class Game extends JFrame implements Runnable {
+
+	private GameScreen gameScreen;
+	private Thread gameThread;
+
+	private final double FPS_SET = 120.0;
+	private final double UPS_SET = 60.0;
+
+	private MyMouseListener myMouseListener ;
+	private KeyboardListener keyboardListener;
+
+	private Render render ;
+
+	//classes etats
+	private Menu menu;
+	private Playing Playing;
+	private Settings Settings;
+	// version terminal
+	private Player player;
     private Map map;
 
     public Map getMap() {
@@ -14,10 +45,7 @@ public class Game {
         return player;
     }
 
-    public Game(){
-        player = new Player();
-        map = new Map();
-    }
+    
 
     public boolean gameLost() { // On verifie si des monstres ce trouvent sur la première colonne
         for (ArrayList<Monster> monstersLane : map.getMonstersLanes()) {
@@ -114,13 +142,124 @@ public class Game {
         System.out.println();
     }
 
+ 
+	// version graphic
+	public Game() {
+		player = new Player();
+        map = new Map();
+
+		initClasses();
+
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+
+		
+		add(gameScreen);
+		//pack();
+		setVisible(true);
+		initInputs();
+
+	}
 
 
+	public void initClasses(){
+		render = new Render(this);
+		gameScreen = new GameScreen(this);// initailiser avec importimg();
+		menu = new Menu(this);
+		Playing = new Playing(this);
+		Settings =new Settings(this);
+	}
 
 
+	private void initInputs(){ /// pour gerer interaction pc utilisateur
+		myMouseListener=new MyMouseListener();
+		keyboardListener = new KeyboardListener();
+		addMouseListener(myMouseListener);
+		addMouseMotionListener(myMouseListener);
+		addKeyListener(keyboardListener);
+		requestFocus();
+	}
+
+	
+
+	
+
+	private void start() {
+		gameThread = new Thread(this) {
+		};
+
+		gameThread.start();
+	}
+
+	private void updateGame() {
+
+		// System.out.println("Game Updated!");
+	}
+
+	public static void main(String[] args) {
+
+		Game game = new Game();
+		game.start();
+
+	}
+
+	@Override
+	public void run() {
+
+		double timePerFrame = 1000000000.0 / FPS_SET;
+		double timePerUpdate = 1000000000.0 / UPS_SET;
+
+		long lastFrame = System.nanoTime();
+		long lastUpdate = System.nanoTime();
+		long lastTimeCheck = System.currentTimeMillis();
+
+		int frames = 0;
+		int updates = 0;
+
+		while (true) {
+			long now = System.nanoTime();
+
+			// Render
+			if (now - lastFrame >= timePerFrame) {
+				repaint();//combien de temps pour chaque image pour atteindre 60 fps par exemple
+				lastFrame = now;
+				frames++;
+			}
+
+			// Update
+			if (now - lastUpdate >= timePerUpdate) {
+				updateGame();
+				lastUpdate = now;
+				updates++;
+			}
+
+			if (System.currentTimeMillis() - lastTimeCheck >= 1000) {
+				System.out.println("FPS: " + frames + " | UPS: " + updates);
+				frames = 0;
+				updates = 0;
+				lastTimeCheck = System.currentTimeMillis();
+			}
+
+		}
+
+	}
+	public Render getRender(){
+		return this.render;
+	}
+	
+    
+	//getters
+	public Menu getMenu(){
+		return this.menu;	
+		
+	}
+	public Playing getPlaying(){
+		return this.Playing;	
+		
+	}
+	public Settings getSettings(){
+		return this.Settings;	
+		
+	}
 }
-
-
-
-
-

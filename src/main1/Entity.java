@@ -1,3 +1,5 @@
+package main1;
+
 public class Entity {
 
     private double life; // Vie de l'entité

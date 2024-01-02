@@ -1,3 +1,5 @@
+package main1;
+
 public class Player {
 
     private int money = 40;
