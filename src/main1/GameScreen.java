@@ -29,12 +29,13 @@ public class GameScreen extends JPanel {
         this.game = game;
     }
     public void setPanelSize(){
-        SIZE = new Dimension(640,640);
+        SIZE = new Dimension(975,650);
         setMinimumSize(SIZE);
         setPreferredSize(SIZE);
         setMaximumSize(SIZE);
 
     }
+    
 
 
 

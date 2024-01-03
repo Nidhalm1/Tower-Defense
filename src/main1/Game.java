@@ -149,15 +149,15 @@ public class Game extends JFrame implements Runnable {
         map = new Map();
 
 		initClasses();
-
+		
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
 
 		
 		add(gameScreen);
-		//pack();
-		setVisible(true);
+		pack(); // ou setSize(width, height);
+		setLocationRelativeTo(null); // Centre la fenêtre après avoir défini la taille.
+		setVisible(true); // Rend la fenêtre visible après le positionnement.
 		initInputs();
 
 	}

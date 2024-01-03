@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Menu extends JFrame {
+public class MenuFacu extends JFrame {
    
     JPanel buttonPlayPanel = new JPanel();
     JPanel buttonQuitPanel = new JPanel();
@@ -24,7 +24,7 @@ public class Menu extends JFrame {
     JCheckBox marathonModeCheckBox = new JCheckBox("Mode Marathon");
     JButton buttonPlayGame = new JButton("Jouer");
 
-    public Menu(){
+    public MenuFacu(){
         this.setTitle("Tower Defense");
         this.setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
