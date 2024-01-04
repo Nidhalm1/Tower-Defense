@@ -2,12 +2,12 @@ package main1;
 
 import java.util.Scanner;
 
-public class Main {
+public class ConsoleLauncher {
 
 
     public static void main(String[] args) {
         Game game = new Game();
-        int moneyCompt = 0; //permet de gagner après un certains nombre de tours
+        int moneyCompt = 0; //permet de gagner après un certains nombre de tours 
 
         while(!game.gameLost()){
 
