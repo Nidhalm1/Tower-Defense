@@ -20,6 +20,8 @@ public class Playing extends GameScene implements SceneMethods {
 	private Random random;
     private MyButton bMenu;
 
+	private BufferedImage towerImage1; // Image pour la Tour 1
+
 
     
     public Playing(GamePanel game){
@@ -27,6 +29,7 @@ public class Playing extends GameScene implements SceneMethods {
         importImg();
         random = new Random();
 		initButtons();
+		loadTowerImages();
     }
 
     @Override
@@ -39,19 +42,26 @@ public class Playing extends GameScene implements SceneMethods {
     if (img != null) {
         g2d.drawImage(img, 0, 0, newWidth, newHeight, null);
     }
-        //g.drawImage(img, 0, 0, null);
-
-			for (int i = 0; i < 20; i++) {// si on fait moins que< 32 camarche
-				g.setColor(getRandomColor());//changer la coleur dudessin
-				g.fillRect(i*32, 0, 32, 32);
-			}
-			for (int y = 0; y < 20; y++) {
-				g.setColor(getRandomColor());//changer la coleur dudessin
-				g.fillRect(0, y*32, 32, 32);
-			}
+			
         drawButtons(g);
+		g.drawImage(towerImage1, 113, 5, null);
 
 
+    }
+
+	private void loadTowerImages() {
+       
+
+		InputStream is = getClass().getResourceAsStream("/res/tour1.png");
+
+		try {
+			towerImage1 = ImageIO.read(is);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	
     }
 	private void initButtons() {
 		bMenu = new MyButton("Menu", 2, 2, 100, 30);
