@@ -5,11 +5,11 @@ import java.awt.Graphics;
 
 public class Render {
 
-	private Game game;
+	private GamePanel gamePanel;
 	
 
-	public Render(Game game) {
-		this.game = game;
+	public Render(GamePanel gamePanel) {
+		this.gamePanel = gamePanel;
 		
 	}
 
@@ -18,19 +18,22 @@ public class Render {
 		switch (GameStates.gameState) {
 
 		case MENU:
-			game.getMenu().render(g);
+		gamePanel.getMenu().render(g);
 
 			break;
 		case PLAYING:
 			
-			game.getPlaying().render(g);
+		gamePanel.getPlaying().render(g);
 
 			break;
 		case SETTINGS:
 			
-			game.getSettings().render(g);
+		gamePanel.getSettings().render(g);
 
 			break;
+		case SECONDMENU:
+			
+		gamePanel.getSecondMenu().render(g);
 
 		}
 

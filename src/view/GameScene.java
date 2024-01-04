@@ -1,17 +1,17 @@
 package view;
 
 
-import main1.Game;
+import main1.GamePanel;
 
 public class GameScene {
 
-	private Game game;
+	private GamePanel gamePanel;
 
-	public GameScene(Game game) {
-		this.game = game;
+	public GameScene(GamePanel gamePanel) {
+		this.gamePanel = gamePanel;
 	}
 
-	public Game getGame() {
-		return game;
+	public GamePanel getGame() {
+		return gamePanel;
 	}
 }
