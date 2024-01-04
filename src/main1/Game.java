@@ -29,11 +29,14 @@ public class Game extends JFrame implements Runnable {
 
 	private Render render ;
 
+
+
 	//classes etats
 	private Menu menu;
 	private Playing Playing;
 	private Settings Settings;
 	// version terminal
+	private int difficulty; // ENTIER POUVANT ALLER DE 1 à 3 (FACILE,MOYEN,DIFFICILE)
 	private Player player;
     private Map map;
 
