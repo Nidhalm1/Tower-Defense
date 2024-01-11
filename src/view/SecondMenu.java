@@ -5,14 +5,14 @@ import control.MyButton;
 import main1.GamePanel;
 import static main1.GameStates.*;
 
-public class SecondMenu extends GameScene implements SceneMethods {
+public class SecondMenu   implements SceneMethods {
 
     private MyButton bMarathon, BNormal, bRevenir;
 
 
 
     public SecondMenu(GamePanel gamePanel) {
-        super(gamePanel);
+        
         initButtons();
 
         
@@ -25,9 +25,9 @@ public class SecondMenu extends GameScene implements SceneMethods {
 		int y = 150;
 		int yOffset = 100;
 
-		bMarathon = new MyButton("Mode Marathon", x, y, w, h);
-		BNormal = new MyButton("Mode Normal", x, y + yOffset, w, h);
-		bRevenir = new MyButton("Revenir", x, y + yOffset * 2, w, h);
+		bMarathon = new MyButton("Mode Marathon", x, y, w, h,"");
+		BNormal = new MyButton("Mode Normal", x, y + yOffset, w, h,"");
+		bRevenir = new MyButton("Revenir", x, y + yOffset * 2, w, h,"");
 
 	}
 

@@ -30,7 +30,7 @@ public class GameScreen extends JPanel {
        
         setPanelSize();
         
-        
+        initInputs();
         
     }
     public void initInputs(){ /// pour gerer interaction pc utilisateur

@@ -22,7 +22,7 @@ public class GamePanel extends JFrame implements Runnable {
 	private GameScreen gameScreen;
 	private Thread gameThread;
 
-	private final double FPS_SET = 120.0;
+	private final double FPS_SET = 60.0;
 	private final double UPS_SET = 60.0;
 
 	
@@ -57,14 +57,14 @@ public class GamePanel extends JFrame implements Runnable {
 
 
 	public void initClasses(){
-		render = new Render(this);
+		
 		
 		menu = new Menu(this);
 		secondMenu = new SecondMenu(this);
 		Playing = new Playing(this);
 		Settings =new Settings(this);
-
-		gameScreen = new GameScreen(this);// initailiser avec importimg();
+		render = new Render(this, Settings);
+		gameScreen = new GameScreen(this);
 
 	}
 

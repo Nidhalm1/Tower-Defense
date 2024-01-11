@@ -13,9 +13,12 @@ import javax.imageio.ImageIO;
 
 import control.MyButton;
 import main1.GamePanel;
-import static main1.GameStates.*;
+import main1.MapStates;
 
-public class Playing extends GameScene implements SceneMethods {
+import static main1.GameStates.*;
+import static main1.MapStates.MAP1;
+
+public class Playing   implements SceneMethods {
     private BufferedImage img;
 	private Random random;
     private MyButton bMenu;
@@ -25,8 +28,7 @@ public class Playing extends GameScene implements SceneMethods {
 
     
     public Playing(GamePanel game){
-        super(game);
-        importImg();
+        updateMap();
         random = new Random();
 		initButtons();
 		loadTowerImages();
@@ -64,7 +66,7 @@ public class Playing extends GameScene implements SceneMethods {
 	
     }
 	private void initButtons() {
-		bMenu = new MyButton("Menu", 2, 2, 100, 30);
+		bMenu = new MyButton("Menu", 2, 2, 100, 30, "");
 
 	}
 
@@ -75,11 +77,19 @@ public class Playing extends GameScene implements SceneMethods {
         int b = random.nextInt(256);
         return new Color(r, g, b);
     }
-
+	public void updateMap() {
+		importImg();
+	}
+	
 	private void importImg() {
 
-		InputStream is = getClass().getResourceAsStream("/res/mainBG.png");
-
+		InputStream is ;
+		if (MapStates.mapState==MAP1) {
+			is= getClass().getResourceAsStream("/res/map1.png");
+		}
+		else{
+			is= getClass().getResourceAsStream("/res/map2.png");
+		}
 		try {
 			img = ImageIO.read(is);
 		} catch (IOException e) {
