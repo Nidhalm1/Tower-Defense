@@ -84,12 +84,10 @@ public class Playing   implements SceneMethods {
 	private void importImg() {
 
 		InputStream is ;
-		if (MapStates.mapState==MAP1) {
-			is= getClass().getResourceAsStream("/res/map1.png");
-		}
-		else{
-			is= getClass().getResourceAsStream("/res/map2.png");
-		}
+		
+	
+		is= getClass().getResourceAsStream("/res/map1.png");
+		
 		try {
 			img = ImageIO.read(is);
 		} catch (IOException e) {
