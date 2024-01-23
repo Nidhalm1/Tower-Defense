@@ -21,7 +21,7 @@ public class Menu   implements SceneMethods {
     public Menu(GamePanel gamePanel) {
 		this.gamePanel = gamePanel;
         initButtons();
-		loadImage("res/menu.png");
+		loadImage("res/men.png");
         
     }
 
