@@ -7,9 +7,8 @@ Jeu développé par Nidhal MOUSSA en Java à l'aide de la bibliothèque Swing et
 
 Voici une courte vidéo de démonstration du jeu :
 
-<video src="https://github.com/Nidhalm1/Tower-Defense/raw/main/demo.mp4" controls width="600"></video>
+<video src="https://github.com/Nidhalm1/Tower-Defense/raw/main/dem2.mp4" controls width="600"></video>
 
-_Voici une démonstration vidéo du jeu disponible ci-dessus ou sur [YouTube](https://youtu.be/A6MKc-MKveA)._  
 
 - Java 17 ou une version ultérieure.
 - Gradle est utilisé pour la gestion du projet. Un wrapper Gradle est inclus, vous pouvez donc utiliser `gradlew` (Windows) ou `./gradlew` (Linux/Mac).
