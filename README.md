@@ -3,11 +3,8 @@
 Bienvenue dans Tower Defense, un jeu de stratégie où vous devez défendre votre base contre des vagues d'ennemis en plaçant judicieusement vos tours. Préparez-vous à tester vos compétences tactiques dans des environnements de plus en plus difficiles !
 
 Jeu développé par Nidhal MOUSSA en Java à l'aide de la bibliothèque Swing et JavaFX.
-## Démonstration Vidéo
-
-Voici une courte vidéo de démonstration du jeu :
-
-<video src="https://github.com/Nidhalm1/Tower-Defense/raw/main/dem2.mp4" controls width="600"></video>
+<h3>Démo du jeu</h3>
+<video src="https://raw.githubusercontent.com/Nidhalm1/Tower-Defense/main/dem2.mp4" controls width="600"></video>
 
 
 - Java 17 ou une version ultérieure.
